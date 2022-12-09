@@ -1,0 +1,1 @@
+& C:/Users/Tim/Desktop/django-schools-map/schools-src/env/Scripts/Activate.ps1

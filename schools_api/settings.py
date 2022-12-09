@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+
 import environ
 
 from pathlib import Path
@@ -121,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Ireland/Dublin'
+TIME_ZONE = 'Europe/Dublin'
 
 USE_I18N = True
 
@@ -142,3 +144,5 @@ LEAFLET_CONFIG = {
     'SCALE': 'both',
     'ATTRIBUTION_PREFIX': 'Tim Seery Schools Map'
 }
+
+GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal305'

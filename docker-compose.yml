@@ -19,11 +19,11 @@ services:
       - .env
     restart: "on-failure"
     depends_on:
-      - postgres-db
+      - postgres-db-1
     networks:
       - school-api
 
-  postgres-db:
+  postgres-db-1:
     image: kartoza/postgis:12.0
     ports:
       - 5432:5432
