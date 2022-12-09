@@ -1,3 +1,9 @@
+#Makefile to simplify running docker commands 
+#unable to get this working on windows but if 
+#running on linux machine 
+#use make (*build*) to run docker compose as shown 
+#below and for the rest of the commands
+
 ifneq (,$(wildcard ./.env))
    include .env
    export

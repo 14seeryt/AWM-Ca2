@@ -10,7 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+#import to help find the path to osgeo64W to solve GDAL error 
+
 import os
+if os.name == 'nt':
+    import platform
+    OSGEO4W = r"C:\OSGeo4W"
+    if '64' in platform.architecture()[0]:
+        OSGEO4W += "64"
+    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+    os.environ['OSGEO4W_ROOT'] = OSGEO4W
+    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
+    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
+    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
 
 import environ
 
@@ -23,10 +35,6 @@ environ.Env.read_env(env_file='.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
@@ -87,6 +95,8 @@ WSGI_APPLICATION = 'schools_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+#Defining database settings in order to establish connection 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
@@ -123,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Dublin'
+TIME_ZONE = 'Europe/Dublin' # Setting correct Time Zone 
 
 USE_I18N = True
 
@@ -137,12 +147,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (53.3498, 6.2603),
+LEAFLET_CONFIG = {  #configuring Leaflet for the application 
+    'DEFAULT_CENTER': (53.3498, 6.2603),    # Where the map is intiallty rendered 
     'DEFAULT_ZONE': 8,
-    'MAX_ZOOM': 20,
+    'MAX_ZOOM': 20, # How much it is zoomed in 
     'SCALE': 'both',
-    'ATTRIBUTION_PREFIX': 'Tim Seery Schools Map'
+    'ATTRIBUTION_PREFIX': 'Tim Seery Schools Map' # Label in bottom right of screen 
 }
 
-GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal305'
+

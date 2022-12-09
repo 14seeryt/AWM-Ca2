@@ -1,24 +1,32 @@
 FROM python:3.9-slim-buster
 
-WORKDIR /app
+#Create a working directory
+WORKDIR /app   
 
+#Run the working diretory
 RUN mkdir -p /postgres_data
 
+#Python environemnt 
 ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONBUFFERED 1
 
+#Run apt-get update to install netcat and postgresql
 RUN apt-get update \
    && apt-get -y install netcat gcc postgresql \ 
    && apt-get clean
 
+#run apt-get update and inistall gdal 
 RUN apt-get update &&\
    apt-get install -y binutils libproj-dev gdal-bin python-gdal python-gdal
 
+#upgrade pip 
 RUN pip install --upgrade pip 
 
+#coopy the requirments.txt to app directory 
 COPY ./requirements.txt /app/requirements.txt
 
+# install the requirements file 
 RUN pip install -r requirements.txt
 
 COPY . /app 

@@ -21,3 +21,7 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 README.md
+
+# Docker ignore file: The . dockerignore file is helpful to avoid inadvertently sending files or 
+#directories that are large or contain sensitive files to the daemon or avoid adding them to the
+# image using the ADD or COPY commands.

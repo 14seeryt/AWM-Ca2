@@ -31,6 +31,7 @@ services:
       # for persistent storage
       - postgres_data:/var/lib/postgresql
     environment:
+    #psotgres user, pass, adn db 
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASS=${POSTGRES_PASS}
       - POSTGRES_DB=${POSTGRES_DB}
