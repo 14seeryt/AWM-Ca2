@@ -18,7 +18,7 @@ RUN apt-get update \
 
 #run apt-get update and inistall gdal 
 RUN apt-get update &&\
-   apt-get install -y binutils libproj-dev gdal-bin python-gdal python-gdal
+   apt-get install -y binutils libproj-dev gdal-bin python-gdal python3-gdal
 
 #upgrade pip 
 RUN pip install --upgrade pip 
