@@ -38,6 +38,18 @@ services:
       networks:
          - school-api
 
+   client:
+      build:
+         context: ./client
+         dockerfile: Dockerfile.dev
+      container_name: school_frontend
+      volumes:
+         - ./client:/app
+      depends_on:
+         - school-api
+      networks:
+         - school-api
+
    nginx:
       restart: always
       depends_on:

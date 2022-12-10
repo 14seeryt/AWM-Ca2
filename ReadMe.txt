@@ -10,3 +10,8 @@ Email:C19420246@mytudublin.ie
 Password: Tim@1452
 
 ==================
+
+Had to change the contents of index.js in client directory to match the appropriate 
+version of react. Very strange error. Should have been fixed by npm install / npm audit ?
+
+==================
