@@ -1,13 +1,14 @@
 import axios from "axios";
 import { Icon } from "leaflet";
 import React, { useState } from "react";
-import { Alert, Spinner } from "react-bootstrap";
+import { Alert, Spinner, Container, Navbar } from "react-bootstrap";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import useSWR from "swr";
 import "./App.css";
 
+
 export const icon = new Icon({
-   iconUrl: "TUD.png",
+   iconUrl: "leaf-green.png",
    shadowUrl: "leaf-shadow.png",
    iconSize: [38, 95],
    shadowSize: [50, 64],
@@ -23,11 +24,11 @@ const App = () => {
 
    const { data, error } = useSWR("/api/v1/schools", fetcher);
    const schools = data && !error ? data : {};
-   const position = [53.3498,-6.2603];
+   const position = [53.3498, -6.2603];
    const zoom = 9;
 
    if (error) {
-      return <Alert variant="danger">There is a problem</Alert>;
+      return <Alert variant="danger">There is an issue within the source code</Alert>;
    }
    if (!data) {
       return (
@@ -44,6 +45,8 @@ const App = () => {
          />
       );
    }
+
+
    return (
       <MapContainer center={position} zoom={zoom}>
          <TileLayer
@@ -75,9 +78,9 @@ const App = () => {
                      <h6>{school.properties.name}</h6>
                      <p>{school.properties.province}</p>
                      <p>{school.properties.district}</p>
-                     <p>Level: {school.properties.level}</p>
-                     <p>Male: {school.properties.male}</p>
-                     <p>Female: {school.properties.female}</p>
+                     <p>College Level: {school.properties.level}</p>
+                     <p>No. of Male Students: {school.properties.male}</p>
+                     <p>No. of Female Students: {school.properties.female}</p>
                   </div>
                </Popup>
             </Marker>

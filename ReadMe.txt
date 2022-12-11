@@ -15,3 +15,7 @@ Had to change the contents of index.js in client directory to match the appropri
 version of react. Very strange error. Should have been fixed by npm install / npm audit ?
 
 ==================
+
+coordinates of Dublin:
+
+53.3498, -6.2603

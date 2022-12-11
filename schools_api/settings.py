@@ -154,3 +154,4 @@ LEAFLET_CONFIG = {  #configuring Leaflet for the application
     'SCALE': 'both',
     'ATTRIBUTION_PREFIX': 'Tim Seery Schools Map' # Label in bottom right of screen 
 }
+
